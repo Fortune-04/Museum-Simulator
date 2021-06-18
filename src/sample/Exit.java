@@ -28,13 +28,14 @@ public class Exit extends Museum implements Runnable{
                     if (entry.getValue().equals(getClock())) {
                         //remove visitor if current time equal exit time
                         removeHashMap(entry.getKey(), entry.getValue());
+                        int turnstile = (rand.nextInt(4) + 1);
                         System.out.println(getClock() + " Ticket " + entry.getKey() + " exited through exit " + name +
-                                " turnstile " + (rand.nextInt(4) + 1));
+                                " turnstile " + turnstile);
                         if(name == "West Exit"){
                             Platform.runLater(new Runnable() {
                                 @Override
                                 public void run() {
-                                    controller.exitWestGate(entry.getKey() + " exited through turnstile " + (rand.nextInt(4) + 1));
+                                    controller.exitWestGate(entry.getKey() + " exited through turnstile " + turnstile);
                                 }
                             });
 
@@ -43,7 +44,7 @@ public class Exit extends Museum implements Runnable{
                             Platform.runLater(new Runnable() {
                                 @Override
                                 public void run() {
-                                    controller.exitEastGate(entry.getKey() + " exited through turnstile " + (rand.nextInt(4) + 1));
+                                    controller.exitEastGate(entry.getKey() + " exited through turnstile " + turnstile);
                                 }
                             });
 

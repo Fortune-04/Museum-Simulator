@@ -35,15 +35,16 @@ public class Entrance extends Museum implements Runnable{
                 // adding visitor in museum visitor current
                 addHashMap(bob.getTicket().getTicketId(), timeExit);
                 getTotalVisitor().incrementAndGet();
+                int turnstile = (rand.nextInt(4) + 1);
                 System.out.println(getClock() + " Tickets " + bob.getTicket().getTicketId() +
-                        " Entered through " + this.name + " Turnstile " + (rand.nextInt(4) + 1) +
+                        " Entered through " + this.name + " Turnstile " + turnstile +
                         " staying for " + bobTime + " minutes. exiting at : " + timeExit);
                 if(this.name == "North Entrance"){
                     Platform.runLater(new Runnable() {
                         @Override
                         public void run() {
                             controller.entranceNorthGate(bob.getTicket().getTicketId() +
-                                    " Entered through Turnstile " + (rand.nextInt(4) + 1) +
+                                    " Entered through Turnstile " + turnstile +
                                     " staying for " + bob.getTimeInside() + " minutes" );
                         }
                     });
@@ -54,7 +55,7 @@ public class Entrance extends Museum implements Runnable{
                         @Override
                         public void run() {
                             controller.entranceSouthGate(bob.getTicket().getTicketId() +
-                                    " Entered through Turnstile " + (rand.nextInt(4) + 1) +
+                                    " Entered through Turnstile " + turnstile +
                                     " staying for " + bob.getTimeInside() + " minutes");
                         }
                     });
